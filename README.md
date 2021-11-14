@@ -13,3 +13,10 @@ Expensave is a MEVN + GraphQL web application created to track expenses over tim
     |-- README.md
     |-- src
 </pre>
+
+## Future Agendas
+
+- Renovate UI
+- Implement monthly and weekly summaries
+- Implement Chart UI Dashboard
+- Implement Login and Authentication functionalities (TBD)
