@@ -72,16 +72,6 @@ Mongoose.connect("mongodb://localhost/expensave").then(() => {
                  resolve: (root, args, context, info) => {
                      return ExpenseModel.find({date: args.date}).exec();
                  }
-             },
-             delItem: {
-                 type: ExpenseType,
-                 args: {
-                     id: { type: GraphQLNonNull(GraphQLID) }
-                 },
-                 resolve: (root, args, context, info) => {
-                     // noinspection JSUnresolvedFunction
-                     return ExpenseModel.findByIdAndRemove(args.id).exec();
-                 }
              }
          }
        }),
@@ -112,6 +102,16 @@ Mongoose.connect("mongodb://localhost/expensave").then(() => {
                     resolve: (root, args, context, info) => {
                         // noinspection JSUnresolvedFunction
                         return ExpenseModel.findByIdAndUpdate(args.id, { status: args.status }).exec();
+                    }
+                },
+                delItem: {
+                    type: ExpenseType,
+                    args: {
+                        id: { type: GraphQLNonNull(GraphQLID) }
+                    },
+                    resolve: (root, args, context, info) => {
+                        // noinspection JSUnresolvedFunction
+                        return ExpenseModel.findByIdAndRemove(args.id).exec();
                     }
                 }
             }
