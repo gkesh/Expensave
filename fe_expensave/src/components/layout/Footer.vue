@@ -1,6 +1,5 @@
 <template>
     <footer>
-        <p></p>
         <p>Total</p>
         <p>{{ total }}</p>
     </footer>
@@ -17,10 +16,10 @@
 
 <style scoped>
     footer {
-        background: #ececec;
-        padding: 15px 30px;
-        border-bottom: 1px #ccc dashed;
         display: flex;
+        background: var(--background-muted);
+        padding: var(--padding-full);
+        border-bottom: var(--border-dashed);
     }
     p {
         font-size: 1.2em;

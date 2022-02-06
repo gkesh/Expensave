@@ -12,27 +12,26 @@
 </script>
 
 <style scoped>
-    * {
-        font-size: 1.5em;
-        font-weight: bolder;
-    }
     .holder {
-        height: 2em;
-        width: 2em;
-        text-align: center;
-        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        font-weight: bolder;
+        height: 80px;
+        width: 80px;
+        border-radius: 40px;
         position: absolute;
-        bottom: 20px;
-        right: 20px;
-        padding: 8px;
-        color: #fff;
-        background: #333;
+        bottom: 30px;
+        right: 30px;
+        color: var(--text-light);
+        background: var(--background-dark);
         -webkit-box-shadow: 0 0 10px 0 rgba(50, 50, 50, 0.75);
         -moz-box-shadow:    0 0 10px 0 rgba(50, 50, 50, 0.75);
         box-shadow:         0 0 10px 0 rgba(50, 50, 50, 0.75);
     }
     .holder:hover {
         cursor: pointer;
-        color: #007705;
+        color: var(--accent);
     }
 </style>

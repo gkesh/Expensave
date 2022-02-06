@@ -10,8 +10,8 @@
 </template>
 
 <script>
-    import axios from "axios";
-    import QueryHolder from "@/components/models/QueryHolder";
+    import exsave from "@/graphql/client.js";
+    import { updateItem } from "@/graphql/mutations.mjs";
 
     export default {
         name: "Expense",
@@ -19,15 +19,11 @@
         methods: {
             updateStatus: async function() {
                 try {
-                    let result = await axios({
-                        method: "POST",
-                        url: QueryHolder.url,
+                    let result = await exsave({
+                        query: updateItem,
                         data: {
-                            query: QueryHolder.updateItem,
-                            variables: {
-                                id: this.expense.id,
-                                status: !this.expense.status
-                            }
+                            id: this.expense.id,
+                            status: !this.expense.status
                         }
                     });
                     this.expense.status = !result.data.data.refItem.status;
@@ -41,23 +37,28 @@
 
 <style scoped>
     div {
-        background: #f4f4f4;
-        padding: 15px 30px;
-        border-bottom: 1px #ccc dashed;
+        padding: var(--padding-full);
+        border-bottom: var(--border-dashed);
+        font-size: var(--font-size-normal);
         display: flex;
     }
-    .paid {
+    div.paid {
         text-decoration: line-through;
     }
-    .cancel {
-        background: #d14748;
-        color: #ffffff;
+    button.cancel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 25px;
+        width: 25px;
+        border-radius: 12px;
+        background: var(--error);
+        color: var(--text-light);
         border: none;
         padding: 2px 8px;
         font-weight: bold;
-        border-radius: 50%;
         cursor: pointer;
-        font-size: 1em;
+        font-size: var(--font-size-normal);
         float: left;
     }
     p:nth-child(2) {

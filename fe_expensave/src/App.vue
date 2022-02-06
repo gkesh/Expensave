@@ -10,17 +10,18 @@
 </template>
 
 <script>
-  import axios from "axios";
+  import exsave from "@/graphql/client.js";
+  import { selectByDate } from "@/graphql/queries.mjs";
+  import { deleteItem, newExpense } from "@/graphql/mutations.mjs";
   import Header from "@/components/layout/Header";
   import Expenses from "@/components/Expenses";
   import Footer from "@/components/layout/Footer";
   import FloatingActionButton from "@/components/layout/FloatingActionButton";
   import AddExpense from "@/components/AddExpense";
-  import Item from "@/components/models/Item";
-  import QueryHolder from "@/components/models/QueryHolder";
+  import Item from "@/models/Item";
 
   var dateTime = require("node-datetime"),
-          dateStr = dateTime.create().format('Y/m/d');
+      dateStr = dateTime.create().format('Y/m/d');
 
   export default {
     name: 'app',
@@ -33,22 +34,17 @@
     },
     data: function () {
       return {
-        expenses: [
-        ],
+        expenses: [],
         total: 0
       }
     },
     methods: {
       cancelExpense: async function (id)  {
         try {
-          let result = await axios({
-            method: "POST",
-            url: QueryHolder.url,
-            data: {
-              query: QueryHolder.deleteItem,
-              variables: {
-                id: id
-              }
+          let result = await exsave({
+            query: deleteItem,
+            variables: {
+              id: id
             }
           });
           alert(`Item Deleted:: ${result.data.data.delItem.title} purchased on ${result.data.data.delItem.date}`);
@@ -63,19 +59,15 @@
       },
       newExpense: async function(expense) {
         try {
-          let result = await axios({
-            method: "POST",
-            url: QueryHolder.url,
-            data: {
-              query: QueryHolder.newExpense,
-              variables: {
-                title: expense.title,
-                category: expense.category,
-                status: false,
-                quantity: Number(expense.quantity),
-                price: Number(expense.price),
-                date: dateStr
-              }
+          let result = await exsave({
+            query: newExpense,
+            variables: {
+              title: expense.title,
+              category: expense.category,
+              status: false,
+              quantity: Number(expense.quantity),
+              price: Number(expense.price),
+              date: dateStr
             }
           });
           expense.id = result.data.data.expense.id;
@@ -87,14 +79,10 @@
       },
       changeData: async function (date) {
         try {
-          let result = await axios({
-            method: "POST",
-            url: QueryHolder.url,
-            data: {
-              query: QueryHolder.selectByDate,
-              variables: {
-                date: date
-              }
+          let result = await exsave({
+            query: selectByDate,
+            variables: {
+              date: date
             }
           });
           this.expenses = [];
@@ -111,14 +99,10 @@
     },
     created: async function () {
       try {
-        let result = await axios({
-          method: "POST",
-          url: QueryHolder.url,
-          data: {
-            query: QueryHolder.selectByDate,
-            variables: {
-              date: dateStr
-            }
+        let result = await exsave({
+          query: selectByDate,
+          variables: {
+            date: dateStr
           }
         });
         result.data.data.dayItems.forEach(doc => {

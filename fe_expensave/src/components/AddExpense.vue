@@ -5,11 +5,13 @@
             <h3>Add Expense <a @click="hideModal">&times;</a></h3>
             <section class="form">
                 <form @submit="postExpense">
-                    <input type="text" name="title" v-model="title" placeholder="Title" />
-                    <input type="text" name="category" v-model="category" placeholder="Category" />
-                    <div class="dual">
-                        <input type="number" name="quantity" v-model="quantity" placeholder="Qty." />
-                        <input type="number" name="price" v-model="price" placeholder="Price" />
+                    <div class="fields">
+                        <input type="text" name="title" v-model="title" placeholder="Title" />
+                        <input type="text" name="category" v-model="category" placeholder="Category" />
+                        <div class="dual">
+                            <input type="number" name="quantity" v-model="quantity" placeholder="Qty." />
+                            <input type="number" name="price" v-model="price" placeholder="Price" />
+                        </div>
                     </div>
                     <button type="submit">Submit</button>
                 </form>
@@ -19,7 +21,7 @@
 </template>
 
 <script>
-    import Item from '@/components/models/Item';
+    import Item from '@/models/Item';
     import uuid from 'uuid';
 
     export default {
@@ -92,60 +94,59 @@
         background: #fff;
         padding: 0;
         margin: 5px;
-        border-radius: 10px;
+        border-radius: 28px;
         z-index: 999 !important;
         align-self: center;
         height: auto;
-        max-height: 80vh;
-        flex-basis: 20em;
+        flex-basis: 25em;
         overflow: hidden;
     }
+    div.fields {
+        padding: 20px;
+    }
     h3 {
-        padding: 10px 30px;
-        background: #333;
-        color: #fff;
-        border-bottom: 1px #fff dashed;
+        padding: 20px 20px 0px 20px;
+        color: #444;
+        font-size: 2em;
     }
     a {
         float: right;
         cursor: pointer;
     }
     a:hover {
-        color: #d14748;
-    }
-    .form {
-        margin: 10px 0 0 0;
+        color: var(--error);
     }
     input {
-        border: 1px solid #b4b4b4;
-        padding: 10px;
-        border-radius: 5px;
-        width: 90%;
-        margin: 5px 5%;
-        font-size: 0.75em;
+        border: var(--border-solid);
+        background: var(--background-muted);
+        padding: var(--input-padding);
+        border-radius: var(--input-radius);
+        font-size: var(--font-size-normal);
+        font-weight: bold;
+        width: 100%;
+        margin: 10px 0;
     }
     .dual {
         display: flex;
-    }
-    .dual input:last-child {
-        margin-left: 0;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 10px;
     }
     button {
-        padding: 10px;
-        margin-top: 10px;
-        font-size: 1em;
-        font-weight: 600;
-        background: #333;
+        padding: 30px 20px;
+        font-size: var(--font-size-normal);
+        font-weight: bold;
+        background: var(--background-dark);
         width: 100%;
         border: none;
-        color: #fff;
+        color: var(--text-light);
         transition: all 0.25s linear;
         -o-transition: all 0.25s linear;
         -moz-transition: all 0.25s linear;
         -webkit-transition: all 0.25s linear;
     }
     button:hover {
-        background: #007705;
+        background: var(--accent);
         cursor: pointer;
     }
 </style>

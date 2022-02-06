@@ -1,6 +1,6 @@
 <!--suppress ALL -->
 <template>
-    <header class="header">
+    <header>
         <div>
             <h1>{{ title }}</h1>
         </div>
@@ -47,28 +47,32 @@
 </script>
 
 <style scoped>
-    .header {
-        background: #333;
-        color: #fff;
+    header {
+        background: var(--background-light);
+        color: var(--text-dark);
         display: flex;
-        padding: 10px;
+        justify-content: space-between;
+        padding: var(--padding-full);
+        border-bottom: var(--border-solid);
     }
-    .header div {
-        flex: 1;
-    }
-    .header:first-child {
-        text-align: left;
-    }
-    .header:last-child {
-        text-align: right;
+    header div {
+        display: flex;
+        align-items: center;
     }
     input[type=date], input[type=text]{
-        padding: 10px;
-        border: 1px solid #fcfcfc;
-        border-radius: 5px;
-        font-size: 1em;
+        padding: var(--input-padding);
+        background: var(--background-muted);
+        border: var(--border-solid);
+        border-radius: var(--input-radius);
+        font-size: var(--input-font-size);
         font-weight: bold;
         margin-top: 5px;
         float: right;
+    }
+    @media (prefers-color-scheme: dark) {
+        header {
+            background: var(--background-dark);
+            color: var(--text-light);
+        }
     }
 </style>
