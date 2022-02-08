@@ -146,7 +146,7 @@
         -webkit-transition: all 0.25s linear;
     }
     button:hover {
-        background: var(--accent);
+        background: var(--primary);
         cursor: pointer;
     }
 </style>

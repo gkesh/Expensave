@@ -13,7 +13,7 @@ mutation NewExpense($title: String!, $category: String = "Misc.", $status: Boole
 `;
 
 export const deleteItem = `
-query deleteItem($id: ID!) {
+mutation deleteItem($id: ID!) {
     delItem(id: $id) {
         title,
         date

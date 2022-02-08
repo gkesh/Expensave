@@ -2,6 +2,7 @@
 <template>
     <header>
         <div>
+            <img src="@/assets/expensave.svg" alt="logo" />
             <h1>{{ title }}</h1>
         </div>
         <div>
@@ -58,6 +59,11 @@
     header div {
         display: flex;
         align-items: center;
+    }
+    header img {
+        height: 40px;
+        width: 40px;
+        margin-right: 16px;
     }
     input[type=date], input[type=text]{
         padding: var(--input-padding);

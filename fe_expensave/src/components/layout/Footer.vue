@@ -17,7 +17,8 @@
 <style scoped>
     footer {
         display: flex;
-        background: var(--background-muted);
+        background: var(--accent);
+        color: var(--primary);
         padding: var(--padding-full);
         border-bottom: var(--border-dashed);
     }

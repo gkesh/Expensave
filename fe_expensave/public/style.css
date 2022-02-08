@@ -2,7 +2,8 @@
     --font-family: "Ubuntu", "Tahoma";
     --font-size-normal: 1.1em;
 
-    --accent: #bedaba;
+    --primary: #56c596;
+    --accent: #cff4d2;
     --error: #fe615a;
 
     --background-dark: #333;
