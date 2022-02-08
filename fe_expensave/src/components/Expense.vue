@@ -21,7 +21,7 @@
                 try {
                     let result = await exsave({
                         query: updateItem,
-                        data: {
+                        variables: {
                             id: this.expense.id,
                             status: !this.expense.status
                         }
@@ -62,7 +62,7 @@
         float: left;
     }
     p:nth-child(2) {
-        flex: 20;
+        flex: 30;
         cursor: pointer;
         text-align: left;
     }
@@ -80,7 +80,7 @@
     }
     p:first-child {
         cursor: pointer;
-        flex: 5;
+        flex: 2;
     }
     p:last-child {
         text-align: end;
