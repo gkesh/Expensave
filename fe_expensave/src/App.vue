@@ -13,10 +13,10 @@
   import exsave from "@/graphql/client.js";
   import { selectByDate } from "@/graphql/queries.mjs";
   import { deleteItem, newExpense } from "@/graphql/mutations.mjs";
-  import Header from "@/components/layout/Header";
+  import Header from "@/layout/Header";
   import Expenses from "@/components/Expenses";
-  import Footer from "@/components/layout/Footer";
-  import FloatingActionButton from "@/components/layout/FloatingActionButton";
+  import Footer from "@/layout/Footer";
+  import FloatingActionButton from "@/layout/FloatingActionButton";
   import AddExpense from "@/components/AddExpense";
   import Item from "@/models/Item";
 
